@@ -1,7 +1,7 @@
 <div class="jumbotron">
   <h1 style="text-align: center">Credit Control</h1>
 </div>
-
+<% if @people.size > 0 %>
 <% @people.each do |person| %>
     <div class="panel panel-primary">
       <div class="panel-heading">
@@ -35,4 +35,12 @@
       </div>
     </div>
 <%end%>
-
+<% else %>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="page-header" style="text-align: center;  margin: 0;margin-top: -15px;">
+          <h1><small>All payments are up to date.</small></h1>
+        </div>
+      </div>
+    </div>
+<% end %>
