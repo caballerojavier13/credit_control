@@ -2,6 +2,7 @@
 <div class="jumbotron">
     <h1 style="text-align: center">Listing People</h1>
 </div>
+<% if @people.size > 0 %>
 <div class="table-responsive">
 <table class="table table-bordered table-hover table-striped">
   <thead>
@@ -26,6 +27,9 @@
   </tbody>
 </table>
 </div>
+<% else %>
+    <div class="well well-sm">Not result found.</div>
+<% end %>
 <br>
 
 <div class="col-sm-2">
