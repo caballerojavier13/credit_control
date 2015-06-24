@@ -1,0 +1,38 @@
+<div class="jumbotron">
+  <h1 style="text-align: center">Credit Control</h1>
+</div>
+
+<% @people.each do |person| %>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= person.name %></h3>
+      </div>
+      <div class="panel-body">
+        <% quotes = Quote.where(:is_paid => 'false').where( 'mounth <= ? AND year <= ?', Date.today.month, Date.today.year).where(:sale_id => Sale.where(:person_id => person.id).select('id')) %>
+        <div class="table-responsive">
+        <table class="table table-bordered">
+          <thead>
+          <tr>
+            <th>Sale</th>
+            <th  style="text-align: center">Amount</th>
+            <th style="text-align: center">Quote</th>
+            <th style="width: 200px; text-align: center">Operations</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <% quotes.each do |quote| %>
+              <tr>
+                <td><%= quote.sale.description.capitalize %></td>
+                <td style="text-align: center">$ <%= '%.2f' % quote.amount %></td>
+                <td style="text-align: center"><%= quote.number < 10? '0' + quote.number.to_s : quote.number %>/<%= quote.total < 10? '0' + quote.total.to_s : quote.total %></td>
+                <td style="text-align: center"><%= link_to 'View Sale', quote.sale, :class => 'btn btn-info'  %></td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+      </div>
+    </div>
+<%end%>
+

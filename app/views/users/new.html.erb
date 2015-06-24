@@ -1,0 +1,43 @@
+
+<div class="jumbotron">
+  <h1 style="text-align: center">Signup</h1>
+</div>
+
+<%= form_for :user, url: '/users',html: { class: 'form-horizontal'} do |f| %>
+    <div class="form-group">
+        <label for="email" class="control-label col-sm-3">Name</label>
+        <div class="col-sm-6">
+            <input type="text" id="name" name="name" class="form-control" placeholder="Name" required autofocus>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="email" class="control-label col-sm-3">Email</label>
+
+        <div class="col-sm-6">
+          <input type="email" id="email" name="email" class="form-control" placeholder="Email address" required autofocus>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="password" class="control-label col-sm-3">Password</label>
+
+        <div class="col-sm-6">
+          <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+        </div>
+
+    </div>
+
+    <div class="form-group">
+
+        <label for="password" class="control-label col-sm-3">Password Confirmation</label>
+
+          <div class="col-sm-6">
+            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control" placeholder="Password Confirmation" required>
+          </div>
+
+    </div>
+    <div class="col-sm-4 col-sm-offset-4">
+        <button type="submit" class="btn btn-success btn-block">Submit</button>
+    </div>
+<% end %>

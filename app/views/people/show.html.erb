@@ -1,0 +1,15 @@
+<div class="jumbotron">
+  <h1 style="text-align: center">View Person</h1>
+</div>
+
+<ul class="list-group">
+  <li class="list-group-item">
+    <p class="col-sm-2" style="text-align: right"><strong>Name:</strong></p>
+      <%= @person.name %>
+  </li>
+</ul>
+
+<div class="col-sm-2"><%= link_to 'Back', people_path, :class => 'btn btn-default btn-block' %></div>
+<div class="col-sm-2"><%= link_to 'View Sales', sales_path(:filter_payment => 'all', :filter_person => @person.id), :class => 'btn btn-info btn-block' %></div>
+<div class="col-sm-2"><%= link_to 'Edit', edit_person_path(@person), :class => 'btn btn-primary btn-block' %></div>
+

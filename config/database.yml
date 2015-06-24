@@ -1,0 +1,25 @@
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: credit_control_development
+  pool: 5
+  username: javier
+  password: javier
+
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: credit_control_test
+  pool: 5
+  username: javier
+  password: javier
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: credit_control_production
+  pool: 5
+  username: javier
+  password: javier

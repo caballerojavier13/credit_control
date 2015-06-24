@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: 1
+  total: 1
+  mounth: 1
+  year: 1
+  is_pais: false
+
+two:
+  number: 1
+  total: 1
+  mounth: 1
+  year: 1
+  is_pais: false

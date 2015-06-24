@@ -1,0 +1,53 @@
+
+<div class="jumbotron">
+    <h1 style="text-align: center">Listing People</h1>
+</div>
+<div class="table-responsive">
+<table class="table table-bordered table-hover table-striped">
+  <thead>
+    <tr>
+      <th style="width: 60%;">Name</th>
+      <th>Operations</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @people.each do |person| %>
+      <tr>
+        <td style="width: 60%;"><%= person.name.to_s.capitalize %></td>
+        <td>
+            <%= link_to 'Show', person, :class => 'btn btn-info'  %>
+            <%= link_to 'View Sales', sales_path(:filter_payment => 'all', :filter_person => person.id), :class => 'btn btn-info'  %>
+            <%= link_to 'Edit', edit_person_path(person), :class => 'btn btn-primary'  %>
+          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal_<%=person.id%>">Delete</button>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<br>
+
+<div class="col-sm-2">
+<%= link_to 'New Person', new_person_path, :class => 'btn btn-success btn-block' %>
+</div>
+
+<% @people.each do |p| %>
+    <div class="modal fade" id="deleteModal_<%= p.id %>" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Confirmation</h4>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure to delete the person: "<%= p.name.to_s.capitalize %>"?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= link_to 'Delete', delete_person_path(p), :class => 'btn btn-danger'  %>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>

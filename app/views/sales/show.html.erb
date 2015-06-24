@@ -1,0 +1,36 @@
+<div class="jumbotron">
+  <h1 style="text-align: center">View Sale</h1>
+  <h1 style="text-align: center"><small>&laquo<%= @sale.description.capitalize %>&raquo</small></h1>
+</div>
+
+<ul class="list-group">
+  <li class="list-group-item">
+    <p class="col-sm-2" style="text-align: right"><strong>Description:</strong></p>
+    <%= @sale.description.capitalize %>
+  </li>
+
+  <li class="list-group-item">
+        <p class="col-sm-2" style="text-align: right"><strong>Person:</strong></p>
+        <%= @sale.person.name %>
+  </li>
+
+  <li class="list-group-item">
+    <p class="col-sm-2" style="text-align: right"><strong>Date:</strong></p>
+      <%= @sale.date.strftime("%d/%m/%Y")  %>
+  </li>
+  <li class="list-group-item">
+    <p class="col-sm-2" style="text-align: right"><strong>Status Payment:</strong></p>
+    <% porPagar = Quote.where(sale_id:  @sale.id, is_paid: false).order(:number) %>
+    <% if porPagar.size > 0 %>
+        <td> Quote for pay: <%= porPagar.to_a.at(0).number < 10? '0' + porPagar.to_a.at(0).number.to_s : porPagar.to_a.at(0).number %>/<%= porPagar.to_a.at(0).total < 10? '0' + porPagar.to_a.at(0).total.to_s : porPagar.to_a.at(0).total %> </td>
+    <% else %>
+        <td> Paid </td>
+    <% end %>
+  </li>
+</ul>
+
+<div class="col-sm-2 col-xs-12"><%= link_to 'Back', sales_path, :class => 'btn btn-default btn-block' %></div>
+
+<div class="col-sm-2 col-xs-12"><%= link_to 'View Quotes', quotes_sale_path(@sale), :class => 'btn btn-info btn-block' %></div>
+
+<div class="col-sm-2 col-xs-12"><%= link_to 'Edit', edit_sale_path(@sale), :class => 'btn btn-primary btn-block' %></div>

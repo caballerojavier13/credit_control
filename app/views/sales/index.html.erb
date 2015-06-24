@@ -1,0 +1,99 @@
+<div class="jumbotron">
+  <h1 style="text-align: center">Listing Sales</h1>
+</div>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">
+  <div class="panel panel-primary">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Filters
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        <form class="form-inline">
+          <div class="form-group" style="margin-right: 10px;">
+            <label>Status Payment: </label>
+            <select id="filter_payment" class="form-control" style="width: 200px">
+              <option value="all" selected>All</option>
+              <option value="paid" >Only Paid</option>
+              <option value="not_paid">Only not Paid</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Person: </label>
+            <select id="filter_person" class="form-control" style="width: 200px">
+              <option value="all" selected>All</option>
+              <% @people.each do |p| %>
+                <option value="<%= p.id %>"><%= p.name.to_s.capitalize %></option>
+              <% end %>
+            </select>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<% if @sales.size > 0 %>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover table-striped">
+          <thead>
+            <tr>
+              <th style="width: 20%;">Description</th>
+              <th style="width: 20%;">People</th>
+              <th style="width: 20%;">Date</th>
+              <th style="width: 20%;">Paid</th>
+              <th style="width: 20%;">Operations</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @sales.each do |sale| %>
+              <tr>
+                <td><%= sale.description.to_s.capitalize%></td>
+                <td><%= sale.person.name.to_s.capitalize%></td>
+                <td><%= sale.date.strftime("%d/%m/%Y")  %></td>
+                <% porPagar = Quote.where(sale_id:  sale.id, is_paid: false).order(:number) %>
+                <% if porPagar.size > 0 %>
+                    <td> Quote paid: <%= porPagar.to_a.at(0).number < 11? '0' + (porPagar.to_a.at(0).number - 1 ).to_s : porPagar.to_a.at(0).number - 1  %>/<%= porPagar.to_a.at(0).total < 10? '0' + porPagar.to_a.at(0).total.to_s : porPagar.to_a.at(0).total %> </td>
+                <% else %>
+                    <td> Paid </td>
+                <% end %>
+
+                <td>
+                  <%= link_to 'Show', sale, :class => 'btn btn-info'  %>
+                  <%= link_to 'Edit', edit_sale_path(sale) , :class => 'btn btn-primary'  %>
+                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal_<%=sale.id%>">Delete</button>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+<% else %>
+    <div class="well well-sm">Not result found.</div>
+<% end %>
+
+<div class="col-sm-2 col-md-3">
+    <%= link_to 'New Sale', new_sale_path, :class => 'btn btn-success btn-block' %>
+</div>
+<% @sales.each do |sale| %>
+<div class="modal fade" id="deleteModal_<%= sale.id %>" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Confirmation</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure to delete the sale: "<%= sale.description.to_s.capitalize %>"?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= link_to 'Delete', delete_sale_path(sale), :class => 'btn btn-danger'  %>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
