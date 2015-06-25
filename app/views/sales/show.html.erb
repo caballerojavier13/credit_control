@@ -5,26 +5,26 @@
 
 <ul class="list-group">
   <li class="list-group-item">
-    <p class="col-sm-2" style="text-align: right"><strong>Description:</strong></p>
-    <%= @sale.description.capitalize %>
+    <p class="col-sm-2 col-xs-12" style="text-align: right"><strong>Description:</strong></p>
+    <h5><%= @sale.description.capitalize %>
   </li>
 
   <li class="list-group-item">
-        <p class="col-sm-2" style="text-align: right"><strong>Person:</strong></p>
-        <%= @sale.person.name %>
+    <p class="col-sm-2 col-xs-12" style="text-align: right"><strong>Person:</strong></p>
+    <h5><%= @sale.person.name %></h5>
   </li>
 
   <li class="list-group-item">
-    <p class="col-sm-2" style="text-align: right"><strong>Date:</strong></p>
-      <%= @sale.date.strftime("%d/%m/%Y")  %>
+    <p class="col-sm-2 col-xs-12" style="text-align: right"><strong>Date:</strong></p>
+    <h5><%= @sale.date.strftime("%d/%m/%Y")  %></h5>
   </li>
   <li class="list-group-item">
-    <p class="col-sm-2" style="text-align: right"><strong>Status Payment:</strong></p>
+    <p class="col-sm-2 col-xs-12" style="text-align: right"><strong>Status Payment:</strong></p>
     <% porPagar = Quote.where(sale_id:  @sale.id, is_paid: false).order(:number) %>
     <% if porPagar.size > 0 %>
-        <td> Quote for pay: <%= porPagar.to_a.at(0).number < 10? '0' + porPagar.to_a.at(0).number.to_s : porPagar.to_a.at(0).number %>/<%= porPagar.to_a.at(0).total < 10? '0' + porPagar.to_a.at(0).total.to_s : porPagar.to_a.at(0).total %> </td>
+        <h5><td> Quote for pay: <%= porPagar.to_a.at(0).number < 10? '0' + porPagar.to_a.at(0).number.to_s : porPagar.to_a.at(0).number %>/<%= porPagar.to_a.at(0).total < 10? '0' + porPagar.to_a.at(0).total.to_s : porPagar.to_a.at(0).total %> </td></h5>
     <% else %>
-        <td> Paid </td>
+        <h5><td> Paid </td></h5>
     <% end %>
   </li>
 </ul>

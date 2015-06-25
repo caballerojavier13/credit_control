@@ -1,11 +1,18 @@
-.container{
-    width: 400px;
+@media screen and (min-width: 480px){
+    .container{
+        width: 400px;
+    }
+
+    .form-signin {
+        width: 330px;
+        padding: 15px;
+        margin: 0 auto;
+        margin-top: -20px;
+    }
 }
-.form-signin {
-    width: 330px;
-    padding: 15px;
-    margin: 0 auto;
-}
+
+
+
 .form-signin .form-signin-heading,
 .form-signin .checkbox {
     margin-bottom: 10px;

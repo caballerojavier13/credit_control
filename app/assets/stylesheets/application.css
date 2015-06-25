@@ -10,10 +10,25 @@ body{
   background: rgb(211, 211, 211);
 }
 
+@media screen and (max-width: 480px){
+    body{
+        background: white !important;
+    }
+}
+
 .container {
   background: white;
   padding: 20px;
+  margin-top: -0px !important;
   border-radius: 5px;
+}
+
+.navbar-brand > img {
+  width: 24px;
+  position: relative;
+  margin-right: 10px;
+  display: inline;
+  margin-top: -3px;
 }
 
 .jumbotron{
@@ -24,13 +39,20 @@ body{
 
 .list-group-item {
   border: 1px solid #337ab7;
+   overflow: hidden;
+   padding-bottom: 0;
 }
 .list-group-item > p{
-    margin-top: -10px;
+  margin-top: -10px;
   padding: 10px;
-  margin-left: -14px;
-  margin-right: 14px;
+  margin-left: -15px;
+  margin-right: 15px;
   background: #eee;
+  line-height: 19px;
+  margin-bottom: 0px;
+}
+.list-group-item > h5{
+    line-height: 1px
 }
 
 .jumbotron > h1{
@@ -41,10 +63,28 @@ body{
   .jumbotron > h1{
     font-size: 40px;
    }
-   .list-group-item > p{
-    text-align: left !important;
-    padding: 0 !important;
-   }
+  .list-group-item > p{
+    text-align: center !important;
+    padding: 20px 0px 0px;
+    line-height: 41px;
+    margin: 0;
+    margin-left: -15px;
+    margin-top: -10px;
+    padding-top: 0;
+    width: calc(30px + 100%);
+    border-radius: 3px 3px 0 0;
+  }
+  .list-group-item > h5{
+    text-align: center !important;
+    padding: 20px 0px 0px;
+    line-height: 41px;
+    margin: 0;
+    margin-left: -15px;
+    margin-top: -10px;
+    padding-top: 0;
+    width: calc(30px + 100%);
+    border-radius: 3px 3px 0 0;
+  }
    .col-xs-12{
     margin-bottom: 10px;
    }
@@ -98,9 +138,5 @@ table, td2, th2{
     -webkit-border-radius: 0 0 5px 0 ;
  }
 
- .form-signin {
-  width: 330px;
-  margin: 0 auto !important;
-  margin-top: -20px !important;
- }
+
 
