@@ -1,9 +1,13 @@
 class SalesController < ApplicationController
-  before_action :set_sale, only: [:show, :edit, :update, :delete]
-  before_filter :authorize
+  before_action :set_sale, only: [:show, :show_json, :edit, :update, :delete]
+  before_filter :authorize, except: [:index_json,:show_json]
 
   # GET /sales
   # GET /sales.json
+  def index_json
+    @people = Person.all
+  end
+
   def index
     @people = Person.all
     if params[:filter_person].nil?
@@ -37,6 +41,9 @@ class SalesController < ApplicationController
 
   # GET /sales/1
   # GET /sales/1.json
+  def show_json
+  end
+
   def show
   end
 
@@ -81,7 +88,7 @@ class SalesController < ApplicationController
   # PATCH/PUT /sales/1
   # PATCH/PUT /sales/1.json
   def update
-    quotes = Quote.where(sale_id:  @sale.id)
+    quotes = Quote.where(:sale_id =>  @sale.id)
 
     quotes.each { |q| q.destroy }
 

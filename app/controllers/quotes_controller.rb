@@ -1,7 +1,7 @@
 class QuotesController < ApplicationController
   before_action :set_quote, only: [:show, :edit, :update, :destroy, :pay]
   skip_before_filter :verify_authenticity_token
-  before_filter :authorize
+  before_filter :authorize, except: [:pay]
   # GET /quotes
   # GET /quotes.json
   def index
@@ -74,7 +74,6 @@ class QuotesController < ApplicationController
      @quote.is_paid = true
      @quote.save
      respond_to do |format|
-       #format.html { redirect_to quotes_sale_path(@quote.sale_id) }
        format.json {render json: {:status => "200"}}
      end
   end

@@ -6,6 +6,12 @@ ControlCredito::Application.routes.draw do
 
   resources :people
 
+  get '/json/sales', to: 'sales#index_json', as: 'index_json_sale'
+
+  get '/json/sale/:id', to: 'sales#show_json', as: 'show_json_sale'
+  
+  post '/json/pay/:id', to: 'quotes#pay', as: 'pay_json_quote'
+
   get '/sales/delete/:id', to: 'sales#delete', as: 'delete_sale'
 
   get '/people/delete/:id', to: 'people#delete', as: 'delete_person'
@@ -21,7 +27,7 @@ ControlCredito::Application.routes.draw do
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
 
-  #get '/signup' => 'users#new'
-  #post '/users' => 'users#create'
+#  get '/signup' => 'users#new'
+#  post '/users' => 'users#create'
 
 end

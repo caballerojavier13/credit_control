@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails ControlCredito: test" uuid="f21dda22-807b-4e04-b38a-5c5500074b63">
+      <user-name>javier</user-name>
+      <user-password>dfc0dfcbdfdcdfc3dfcfdfd8</user-password>
+    </data-source>
+    <data-source name="Rails ControlCredito: development" uuid="84c13be2-2e22-438c-b9d2-6d8d14db814d">
+      <user-name>javier</user-name>
+      <user-password>dfc0dfcbdfdcdfc3dfcfdfd8</user-password>
+    </data-source>
+    <data-source name="Rails ControlCredito: production" uuid="b58cf700-d265-4ae3-912d-c29f58f3b652">
+      <user-name>javier</user-name>
+      <user-password>dfc0dfcbdfdcdfc3dfcfdfd8</user-password>
+    </data-source>
+  </component>
+</project>
