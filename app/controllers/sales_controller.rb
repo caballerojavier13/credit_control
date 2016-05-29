@@ -5,7 +5,7 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.json
   def index_json
-    @people = Person.all
+    @people = Person.where(id:(Sale.where(id:(Quote.where(:is_paid => false).select(:sale_id))).select(:person_id)))
   end
 
   def index
