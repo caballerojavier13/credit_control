@@ -12,6 +12,8 @@ ControlCredito::Application.routes.draw do
   
   post '/json/pay/:id', to: 'quotes#pay', as: 'pay_json_quote'
 
+  post '/json/update_amount/:id', to: 'quotes#update_amount', as: 'update_amount_json_quote'
+
   get '/sales/delete/:id', to: 'sales#delete', as: 'delete_sale'
 
   get '/people/delete/:id', to: 'people#delete', as: 'delete_person'

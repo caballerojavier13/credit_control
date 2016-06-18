@@ -1,7 +1,7 @@
 class QuotesController < ApplicationController
-  before_action :set_quote, only: [:show, :edit, :update, :destroy, :pay]
+  before_action :set_quote, only: [:show, :edit, :update, :destroy, :pay, :update_amount]
   skip_before_filter :verify_authenticity_token
-  before_filter :authorize, except: [:pay]
+  before_filter :authorize, except: [:pay,:update_amount]
   # GET /quotes
   # GET /quotes.json
   def index
@@ -76,6 +76,16 @@ class QuotesController < ApplicationController
      respond_to do |format|
        format.json {render json: {:status => "200"}}
      end
+  end
+  def update_amount
+    puts '---------------------------'
+    puts params[:amount]
+    puts '---------------------------'
+    @quote.amount = params[:amount]
+    @quote.save!
+    respond_to do |format|
+      format.json {render json: {:status => "200"}}
+    end
   end
 
   private
