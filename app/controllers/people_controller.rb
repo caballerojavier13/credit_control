@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-  before_action :set_person, only: [:show, :edit, :update, :delete]
+  before_action :set_person, only: [:show, :edit, :update, :destroy]
   before_filter :authorize
 
   # GET /people
@@ -54,7 +54,7 @@ class PeopleController < ApplicationController
 
   # DELETE /people/1
   # DELETE /people/1.json
-  def delete
+  def destroy
 
     @sales = Sale.where(:person_id => @person.id)
     if @sales.size > 0

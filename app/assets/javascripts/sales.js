@@ -13,9 +13,15 @@ $(document).ready(function(){
 });
 
 function getFilterList(){
-    var url=document.location.href;
-    var mainurl = url.split("?");
-    mainurl= mainurl[1].split("&");
-    $('#filter_payment').val(mainurl[0].split("=")[1]);
-    $('#filter_person').val(mainurl[1].split("=")[1]);
+
+    var mainurl = document.location.href.split("?");
+
+    if(mainurl.length > 1) {
+
+        mainurl = mainurl[1].split("&");
+
+        $('#filter_payment').val(mainurl[0].split("=")[1]);
+        $('#filter_person').val(mainurl[1].split("=")[1]);
+
+    }
 }

@@ -1,5 +1,5 @@
 class SalesController < ApplicationController
-  before_action :set_sale, only: [:show, :edit, :update, :delete]
+  before_action :set_sale, only: [:show, :edit, :update, :destroy]
   before_filter :authorize
 
   # GET /sales
@@ -111,7 +111,7 @@ class SalesController < ApplicationController
 
   # DELETE /sales/1
   # DELETE /sales/1.json
-  def delete
+  def destroy
     @sale.destroy
     quotes = Quote.where(sale_id:  @sale.id)
 
