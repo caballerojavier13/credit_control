@@ -12,6 +12,7 @@
             </a>
           </h4>
         </div>
+
         <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
           <div class="panel-body">
             <form class="form-inline">
@@ -37,15 +38,26 @@
         </div>
       </div>
     </div>
+
+      <div class="panel ">
+        <div class="row">
+      <div class="col-sm-12">
+        <%= link_to new_sale_path, :class => 'btn btn-success btn-block' do %>
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> New Sale
+        <% end %>
+      </div>
+    </div>
+    </div>
     <div class="table-responsive">
+
         <table class="table table-bordered table-hover table-striped">
           <thead>
             <tr>
-              <th style="width: 20%;">Description</th>
+              <th style="">Description</th>
               <th style="width: 20%;">People</th>
               <th style="width: 20%;">Date</th>
               <th style="width: 20%;">Paid</th>
-              <th style="width: 20%;">Operations</th>
+              <th style="width: 150px;">Operations</th>
             </tr>
           </thead>
 
@@ -62,10 +74,16 @@
                     <td> Paid </td>
                 <% end %>
 
-                <td>
-                  <%= link_to 'Show', sale, :class => 'btn btn-info'  %>
-                  <%= link_to 'Edit', edit_sale_path(sale) , :class => 'btn btn-primary'  %>
-                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal_<%=sale.id%>">Delete</button>
+                <td style="text-align: center;">
+                  <%= link_to sale, :class => 'btn btn-info' do %>
+                      <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                  <% end %>
+                  <%= link_to edit_sale_path(sale) , :class => 'btn btn-primary' do %>
+                      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                  <% end %>
+                  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal_<%=sale.id%>">
+                    <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                  </button>
                 </td>
               </tr>
             <% end %>
@@ -76,9 +94,7 @@
     <div class="well well-sm">Not result found.</div>
 <% end %>
 
-<div class="col-sm-2 col-md-3">
-    <%= link_to 'New Sale', new_sale_path, :class => 'btn btn-success btn-block' %>
-</div>
+
 <% @sales.each do |sale| %>
 <div class="modal fade" id="deleteModal_<%= sale.id %>" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">

@@ -88,12 +88,19 @@
 
         <div class="form-group">
           <div class="col-sm-2"></div>
+
           <div class="col-sm-2 col-xs-6">
-            <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">Submit</button>
+            <%= link_to sales_path, :class => 'btn btn-default btn-block' do %>
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back
+            <% end %>
           </div>
+
           <div class="col-sm-2 col-xs-6">
-            <%= link_to 'Back', sales_path, :class => 'btn btn-default btn-block'  %>
+            <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#myModal">
+              <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
+            </button>
           </div>
+
         </div>
     <% end %>
 </div>

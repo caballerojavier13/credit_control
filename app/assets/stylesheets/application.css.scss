@@ -23,6 +23,18 @@ body{
   border-radius: 5px;
 }
 
+.navbar-inverse {
+  background-color: #0095c5;
+  border-color: #337ab7;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  color: #e4e4e4;
+}
+.navbar-inverse .navbar-brand {
+  color: white;
+}
+
 .navbar-brand > img {
   width: 24px;
   position: relative;

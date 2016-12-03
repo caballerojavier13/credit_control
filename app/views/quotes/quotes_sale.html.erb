@@ -25,9 +25,13 @@
         <% end %>
 
         <% if quote.is_paid %>
-            <td>Paid</td>
+            <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
         <% else %>
-            <td><a id="quote_<%= quote.id %>_pay" class="pay" style="cursor: pointer" data-toggle="modal" data-target="#confirmPay" data-quote="<%= quote.id %>" data-number="<%= quote.number < 10? '0' + quote.number.to_s : quote.number %>/<%= quote.total < 10? '0' + quote.total.to_s : quote.total %>" >Pay Quote</a></td>
+            <td>
+              <a id="quote_<%= quote.id %>_pay" class="pay" style="cursor: pointer" data-toggle="modal" data-target="#confirmPay" data-quote="<%= quote.id %>" data-number="<%= quote.number < 10? '0' + quote.number.to_s : quote.number %>/<%= quote.total < 10? '0' + quote.total.to_s : quote.total %>" >
+                <span class="glyphicon glyphicon-usd" aria-hidden="true"></span> Pay Quote
+              </a>
+            </td>
         <% end %>
 
       </tr>
@@ -38,7 +42,9 @@
 
 <br>
 <div class="col-sm-2">
-    <%= link_to 'Back', @sale, :class => 'btn btn-default btn-block'  %>
+    <%= link_to @sale, :class => 'btn btn-default btn-block' do %>
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Back
+  <% end %>
 </div>
 
 

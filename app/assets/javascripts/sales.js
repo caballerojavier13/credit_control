@@ -1,6 +1,9 @@
 $(document).ready(function(){
     $('.datepicker').datepicker({
-        format: "dd/mm/yyyy"
+        format: "dd/mm/yyyy",
+        defaultViewDate: 'today',
+        todayHighlight: true,
+        autoclose: true
     });
     $('#filter_payment').on("change",function(){
         window.location.href = window.location.href.split("?")[0] + "?filter_payment=" + $(this).val() + '&filter_person=' + $('#filter_person').val();
