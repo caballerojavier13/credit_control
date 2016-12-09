@@ -27,6 +27,10 @@
         <h5><td> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> </td></h5>
     <% end %>
   </li>
+  <li class="list-group-item">
+    <p class="col-sm-2 col-xs-12" style="text-align: right"><strong>Total debt:</strong></p>
+    <h5>$<%= '%.2f' % porPagar.sum(:amount)  %></h5>
+  </li>
 </ul>
 
 <div class="col-sm-2 col-xs-12">
