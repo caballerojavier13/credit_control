@@ -1,0 +1,55 @@
+{
+  "name": "credit_control",
+  "scripts": {
+  },
+  "env": {
+    "AUTOBUS_URL": {
+      "required": true
+    },
+    "INFORMANT_API_KEY": {
+      "required": true
+    },
+    "KEEN_API_URL": {
+      "required": true
+    },
+    "KEEN_PROJECT_ID": {
+      "required": true
+    },
+    "KEEN_READ_KEY": {
+      "required": true
+    },
+    "KEEN_WRITE_KEY": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "NEW_RELIC_LICENSE_KEY": {
+      "required": true
+    },
+    "NEW_RELIC_LOG": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+    "autobus",
+    "heroku-postgresql",
+    "informant",
+    "keen",
+    "newrelic",
+    "pointdns"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
