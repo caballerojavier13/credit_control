@@ -39,7 +39,7 @@ end
 gem 'jquery-datetimepicker-rails'
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt'
+gem 'bcrypt-ruby'
 
 gem 'rollbar'
 
