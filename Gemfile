@@ -43,8 +43,7 @@ gem 'bcrypt'
 
 gem 'rollbar'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
@@ -56,3 +55,5 @@ gem 'rollbar'
 #gem 'bootstrap-sass', '~> 3.2.0'
 
 #gem 'autoprefixer-rails'
+
+gem 'rails_12factor'
