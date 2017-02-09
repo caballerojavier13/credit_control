@@ -40,6 +40,8 @@ gem 'jquery-datetimepicker-rails'
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.1.2'
 
+gem 'rollbar'
+
 # Use unicorn as the app server
 # gem 'unicorn'
 
