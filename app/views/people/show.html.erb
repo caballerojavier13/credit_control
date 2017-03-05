@@ -7,6 +7,11 @@
     <p class="col-sm-2 col-xs-12" style="text-align: right"><strong>Name:</strong></p>
       <h5><%= @person.name %></h5>
   </li>
+  <li class="list-group-item">
+    <p class="col-sm-2 col-xs-12" style="text-align: right"><strong>Total debt:
+    </strong></p>
+    <h5>$ <%= Quote.where(sale_id: (Sale.where(person: @person)), is_paid: false).sum(:amount).to_f %></h5>
+  </li>
 </ul>
 
 <div class="col-sm-2 col-xs-12"><%= link_to 'Back', people_path, :class => 'btn btn-default btn-block' %></div>
