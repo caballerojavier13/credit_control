@@ -1,3 +1,4 @@
+ruby '2.3.1'
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -38,10 +39,11 @@ end
 gem 'jquery-datetimepicker-rails'
 
 # Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.1.2'
+gem 'bcrypt-ruby'
 
-# Use unicorn as the app server
-# gem 'unicorn'
+gem 'rollbar'
+
+gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
@@ -53,3 +55,5 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 #gem 'bootstrap-sass', '~> 3.2.0'
 
 #gem 'autoprefixer-rails'
+
+gem 'rails_12factor'

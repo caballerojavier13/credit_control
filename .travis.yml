@@ -1,0 +1,19 @@
+# .travis.yml
+language: ruby
+rvm:
+  - 2.3.1
+env:
+  - DB=postgresql
+cache: bundler
+deploy:
+  provider: heroku
+  api_key: 38d56a382da4a5ef23081e02c91e717aeecf12da
+  app:
+    master: credit-control
+addons:
+  postgresql: "9.4"
+services:
+  - postgresql
+script:
+  - cp config/database.travis.yml config/database.yml
+  - RAILS_ENV=development bundle exec rake db:create db:migrate db:seed
