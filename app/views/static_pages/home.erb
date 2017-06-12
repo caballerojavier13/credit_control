@@ -3,12 +3,12 @@
 </div>
 <% if @people.size > 0 %>
 <% @people.each do |person| %>
+    <% quotes = Quote.where(:is_paid => 'false').where( 'mounth <= ? AND year <= ?', Date.today.month, Date.today.year).where(:sale_id => Sale.where(:person_id => person.id).select('id')) %>
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title"><%= person.name %></h3>
+        <h3 class="panel-title"><%= person.name %> - Total: $ <%= '%.2f' % quotes.sum(:amount) %></h3>
       </div>
-      <div class="panel-body">
-        <% quotes = Quote.where(:is_paid => 'false').where( 'mounth <= ? AND year <= ?', Date.today.month, Date.today.year).where(:sale_id => Sale.where(:person_id => person.id).select('id')) %>
+      <div class="panel-body">    
         <div class="table-responsive">
         <table class="table table-bordered">
           <thead>
